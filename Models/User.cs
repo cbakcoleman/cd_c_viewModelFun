@@ -1,0 +1,8 @@
+namespace cd_c_viewModelFun.Models
+{
+    public class User
+    {
+        public string FirstName {get;set;}
+        public string LastName {get;set;}
+    }
+}

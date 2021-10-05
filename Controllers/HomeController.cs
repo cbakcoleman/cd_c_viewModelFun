@@ -11,6 +11,16 @@ namespace cd_c_viewModelFun.Controllers
 {
     public class HomeController : Controller
     {
+        public List<User> GenerateUsers()
+        {
+            return new List<User>()
+            {
+                new User(){ FirstName = "Frankie", LastName = "Valli"}, 
+                new User(){ FirstName = "Buddy", LastName = "Holly"}, 
+                new User(){ FirstName = "Wilson", LastName = "Phillips"}, 
+                new User(){ FirstName = "Duran", LastName = "Duran"}, 
+            };
+        }
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -18,17 +28,12 @@ namespace cd_c_viewModelFun.Controllers
             _logger = logger;
         }
 
+        [HttpGet("")]
         public IActionResult Index()
         {
-            string[] message = new string[]
-            {
-                "Baboon bottoms are red", 
-                "Oxyura australis's bill is blue", 
-                "Hippos spray their feces", 
-                "and sometimes humans do, too"
-            };
+            string stringModel = "Baboon bottoms are red, Oxyura australis' bill is blue, Hippos spray their feces, and sometimes humans do, too";
         
-            return View(message);
+            return View("Index", stringModel);
         }
 
         [HttpGet("Numbers")]
@@ -41,34 +46,22 @@ namespace cd_c_viewModelFun.Controllers
             return View(nums);
         }
 
-        public class UserUser
-        {
-            public string FirstName {get;set;}
-            public string LastName {get;set;}
-        }
+        
 
         [HttpGet("users")]
         public IActionResult Users()
         {
-            List<string> users = new List<string>
-            {
-                "La Croix",
-                "Waterloo", 
-                "Aha",
-                "Bubly"
-            };
+            var users = GenerateUsers();
             return View(users);
         }
 
         [HttpGet("user")]
-        public IActionResult Auser()
+        public IActionResult aUser()
         {
-            UserUser thisuser = new UserUser();
-            {
-                thisuser.FirstName = "Moose";
-                thisuser.LastName = "Phillips";
-            }
-            return View(thisuser);
+            var rando = new Random();
+            var users = GenerateUsers();
+            var user = users[rando.Next(users.Count)];
+            return View("User", user);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

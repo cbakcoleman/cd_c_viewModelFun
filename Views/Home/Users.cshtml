@@ -1,5 +1,6 @@
-@model List<string>
+@using cd_c_viewModelFun.Models
+@model List<User>
 <h2>Here are some Users!</h2>
-@foreach(var name in Model){
-    <p>@name</p>
+@foreach(var user in Model){
+    <p>@user.FirstName @user.LastName</p>
 }
