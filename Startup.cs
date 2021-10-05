@@ -49,5 +49,11 @@ namespace cd_c_viewModelFun
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+        // ADD THESE LINES -->
+        public Startup(IWebHostEnvironment env)
+        {
+            System.Console.WriteLine(env.ContentRootPath);
+            System.Console.WriteLine(env.IsDevelopment());
+        }
     }
 }

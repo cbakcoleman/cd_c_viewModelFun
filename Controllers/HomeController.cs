@@ -20,12 +20,55 @@ namespace cd_c_viewModelFun.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            string[] message = new string[]
+            {
+                "Baboon bottoms are red", 
+                "Oxyura australis's bill is blue", 
+                "Hippos spray their feces", 
+                "and sometimes humans do, too"
+            };
+        
+            return View(message);
         }
 
-        public IActionResult Privacy()
+        [HttpGet("Numbers")]
+        public IActionResult Numbers()
         {
-            return View();
+            int[] nums = new int[]
+            {
+                1, 87, 34, 97, 5, 7, 99
+            };
+            return View(nums);
+        }
+
+        public class UserUser
+        {
+            public string FirstName {get;set;}
+            public string LastName {get;set;}
+        }
+
+        [HttpGet("users")]
+        public IActionResult Users()
+        {
+            List<string> users = new List<string>
+            {
+                "La Croix",
+                "Waterloo", 
+                "Aha",
+                "Bubly"
+            };
+            return View(users);
+        }
+
+        [HttpGet("user")]
+        public IActionResult Auser()
+        {
+            UserUser thisuser = new UserUser();
+            {
+                thisuser.FirstName = "Moose";
+                thisuser.LastName = "Phillips";
+            }
+            return View(thisuser);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

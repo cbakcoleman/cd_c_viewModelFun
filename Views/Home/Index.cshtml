@@ -1,8 +1,9 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model string[]
+<h2>Here is a message!</h2>
+@foreach(var msg in Model){
+    <p>@msg</p>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+
